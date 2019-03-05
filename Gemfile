@@ -24,6 +24,8 @@ gem "bootsnap", require: false
 gem "bootstrap", "~> 4.3.1"
 gem "jquery-rails"
 gem "friendly_id", "~> 5.2.4"
+gem "redcarpet"
+gem "coderay"
 
 group :development do
   gem "listen"
