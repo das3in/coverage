@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :news, only: [:index, :show]
   resources :teams
+  resources :standings, only: [:index]
 end
