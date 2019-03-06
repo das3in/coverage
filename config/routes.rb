@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :teams
   resources :standings, only: [:index]
   resources :tournaments
+  resources :posts
 end

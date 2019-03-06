@@ -1,0 +1,11 @@
+<h1>Posts</h1>
+
+<div class="list-group">
+  <% @posts.each do |post| %>
+    <div class="list-group-item">
+      <%= link_to post.title, edit_post_path(post) %>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
