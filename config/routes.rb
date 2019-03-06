@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :standings, only: [:index]
   resources :tournaments do
     resources :matches
+    resources :microposts, only: [:create]
   end
   resources :posts
+
+  mount ActionCable.server, at: "/cable"
 end

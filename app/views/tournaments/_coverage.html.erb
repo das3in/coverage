@@ -1,1 +1,18 @@
-<h2>Coming soon....</h3>
+<div class="list-group" id="coverage-feed">
+  <% posts.each do |post| %>
+    <div class="list-group-item d-flex justify-content-between align-items-center">
+      <span class="badge badge-primary badge-pill p-4" style="margin-right: 1em;"><%= posts.user.display_name %></span>
+      <%= post.content %>
+    </div>
+  <% end %>
+</div>
+
+<hr />
+
+<% if user_signed_in? %>
+  <%= simple_form_for([@tournament, @post], remote: true) do |f| %>
+    <%= f.text_area :content, class: "form-control", row: 3 %>
+    <br />
+    <%= f.submit "Submit", class: "btn btn-primary", id: "micropost-submit" %>
+  <% end %>
+<% end %>

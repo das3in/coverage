@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :micropost do
+    author { nil }
+    content { "MyString" }
+    tournament { nil }
+  end
+
   factory :rating_change do
     team { nil }
     old_rating { 1 }

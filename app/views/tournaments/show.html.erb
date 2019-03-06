@@ -15,12 +15,15 @@
 
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="coverage" role="tabpanel" aria-labelledby="coverage-tab">
-    <%= render "coverage" %>
+    <br />
+    <%= render "coverage", posts: @microposts %>
   </div>
   <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab">
+    <br />
     <%= render "news" %>
   </div>
   <div class="tab-pane fade" id="standings" role="tabpanel" aria-labelledby="standings-tab">
+    <br />
     <%= render "standings" %>
   </div>
 </div>
