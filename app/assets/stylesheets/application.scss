@@ -205,3 +205,34 @@ h6 {
   padding-top: 5px;
   font-size: 16px;
 }
+
+.card-text {
+  color: #000;
+  text-decoration: none;
+}
+
+.card-text:hover {
+  color: #888;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  color: #000;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #000;
+  background: #fff;
+  border-bottom: 1px solid #000;
+  border-radius: 0;
+  padding-bottom: 3px;
+}
+
+.nav-pills {
+  display: flex;
+  justify-content: center;
+}

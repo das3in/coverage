@@ -3,4 +3,5 @@ class Tournament < ApplicationRecord
   has_many :registered_teams
   has_many :teams, through: :registered_teams
   has_many :matches
+  has_one_attached :thumbnail
 end

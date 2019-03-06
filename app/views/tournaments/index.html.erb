@@ -1,0 +1,14 @@
+<% @tournaments.each do |tournament| %>
+  <%= link_to tournament_path(tournament) do %>
+    <div class="card">
+      <%= image_tag(tournament.thumbnail, class: "card-img-top") %>
+      <div class="card-body">
+        <h4 class="card-text"><%= tournament.name %></h4>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to "New tournament", new_tournament_path, class: "btn btn-primary" %>
+<% end %>
