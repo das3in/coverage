@@ -1,6 +1,9 @@
 class NewsController < ApplicationController
   def index
-    @posts = Post.published.order(created_at: :desc)
+    @posts = Post
+      .includes(:thumbnail_attachment)
+      .published
+      .order(created_at: :desc)
   end
 
   def show

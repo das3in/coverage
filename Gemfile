@@ -26,6 +26,8 @@ gem "jquery-rails"
 gem "friendly_id", "~> 5.2.4"
 gem "redcarpet"
 gem "coderay"
+gem "devise"
+gem "aws-sdk-s3"
 
 group :development do
   gem "listen"

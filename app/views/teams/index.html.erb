@@ -1,0 +1,20 @@
+<h1>Teams</h1>
+
+<div class="list-group">
+  <% @teams.each do |team| %>
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col-4">
+          <%= image_tag(team.avatar) %>
+        </div>
+        <div class="col-8" style="display: flex; align-items: center;">
+          <h4><%= team.display_name %></h4>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if user_signed_in? %>
+  <%= link_to "New team", new_team_path, class: "btn btn-primary" %>
+<% end %>

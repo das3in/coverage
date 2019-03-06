@@ -11,7 +11,7 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
     config.cache_store = :null_store
   end
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
   config.action_mailer.raise_delivery_errors = true
   config.after_initialize do
     Bullet.enable = true

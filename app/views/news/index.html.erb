@@ -13,8 +13,12 @@
             focusable="false"
             role="img"
             aria-label="Placeholder: Thumbnail">
-            <title>{article.title}</title>
-            <rect width="100%" height="100%" fill="#55595c" />
+            <title><%= post.title %></title>
+            <% if post.thumbnail.attached? %>
+              <%= image_tag post.thumbnail %>
+            <% else %>
+              <rect width="100%" height="100%" fill="#55595c" />
+            <% end %>
             <text x="50%" y="50%" fill="#eceeef" dy=".3em">
             <%= post.title %>
             </text>
