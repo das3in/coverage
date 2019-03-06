@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_001947) do
+ActiveRecord::Schema.define(version: 2019_03_06_011016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,30 @@ ActiveRecord::Schema.define(version: 2019_03_06_001947) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "leagues", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_leagues_on_slug", unique: true
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.bigint "home_team_id"
+    t.bigint "away_team_id"
+    t.integer "home_team_score", default: 0
+    t.integer "away_team_score", default: 0
+    t.bigint "winner_id"
+    t.integer "round", default: 0
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["away_team_id"], name: "index_matches_on_away_team_id"
+    t.index ["home_team_id"], name: "index_matches_on_home_team_id"
+    t.index ["tournament_id"], name: "index_matches_on_tournament_id"
+    t.index ["winner_id"], name: "index_matches_on_winner_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "slug"
@@ -73,13 +97,48 @@ ActiveRecord::Schema.define(version: 2019_03_06_001947) do
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
+  create_table "rating_changes", force: :cascade do |t|
+    t.bigint "team_id"
+    t.integer "old_rating"
+    t.integer "new_rating"
+    t.bigint "match_id"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_rating_changes_on_match_id"
+    t.index ["team_id"], name: "index_rating_changes_on_team_id"
+    t.index ["tournament_id"], name: "index_rating_changes_on_tournament_id"
+  end
+
+  create_table "registered_teams", force: :cascade do |t|
+    t.bigint "team_id"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_registered_teams_on_team_id"
+    t.index ["tournament_id"], name: "index_registered_teams_on_tournament_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "location"
     t.string "name"
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "current_pbsn_rating", default: 1500
+    t.integer "current_coaches_poll"
+    t.integer "current_nxl_rank"
     t.index ["slug"], name: "index_teams_on_slug", unique: true
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name"
+    t.bigint "league_id"
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["league_id"], name: "index_tournaments_on_league_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,4 +154,14 @@ ActiveRecord::Schema.define(version: 2019_03_06_001947) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "matches", "teams", column: "away_team_id"
+  add_foreign_key "matches", "teams", column: "home_team_id"
+  add_foreign_key "matches", "teams", column: "winner_id"
+  add_foreign_key "matches", "tournaments"
+  add_foreign_key "rating_changes", "matches"
+  add_foreign_key "rating_changes", "teams"
+  add_foreign_key "rating_changes", "tournaments"
+  add_foreign_key "registered_teams", "teams"
+  add_foreign_key "registered_teams", "tournaments"
+  add_foreign_key "tournaments", "leagues"
 end
