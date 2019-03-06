@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :news, only: [:index, :show]
   resources :teams
   resources :standings, only: [:index]
-  resources :tournaments
+  resources :tournaments do
+    resources :matches
+  end
   resources :posts
 end

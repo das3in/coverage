@@ -1,0 +1,43 @@
+<h2>New Match</h2>
+
+<%= simple_form_for(@match, url: tournament_matches_path(@tournament)) do |f| %>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <%= f.label :home_team_id %>
+        <%= f.select :home_team_id, @tournament.teams.order("name ASC").collect { |team| [team.name, team.id ] }, {}, { class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :home_team_score %>
+        <%= f.number_field :home_team_score, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <%= f.label :away_team_id %>
+        <%= f.select :away_team_id, @tournament.teams.order("name ASC").collect { |team| [team.name, team.id ] }, {}, { class: "form-control"} %>
+      </div>
+      <div class="form-group">
+        <%= f.label :away_team_score %>
+        <%= f.number_field :away_team_score, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <%= f.label :round %>
+      <%= f.select :round, ["Prelims", "Quarter-finals", "Semi-finals", "Finals"], {}, { class: "form-control" } %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <%= f.label :winner_id %>
+      <%= f.select :winner_id, @tournament.teams.order("name ASC").collect { |team| [team.name, team.id ] }, { include_blank: "Select a winner..." }, { class: "form-control"} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

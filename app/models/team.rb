@@ -8,6 +8,8 @@ class Team < ApplicationRecord
   has_many :tournaments, through: :registered_teams
   has_many :rating_changes
 
+  alias_attribute :rating, :current_pbsn_rating
+
   def slug_candidates
     "#{location}-#{name}"
   end
