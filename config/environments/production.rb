@@ -14,7 +14,7 @@ Rails.application.configure do
   config.action_controller.asset_host = ENV.fetch("ASSET_HOST", ENV.fetch("APPLICATION_HOST"))
   config.active_storage.service = :amazon
   config.web_socket_server_url = "wss://#{ENV['APPLICATION_HOST']}/cable" 
-  config.action_cable.allowed_request_origins = ['https://paintabllsportsnetwork', 'http://paintabllsportsnetwork']
+  config.action_cable.allowed_request_origins = ['https://www.paintabllsportsnetwork.com', 'http://www.paintabllsportsnetwork.com']
   config.log_level = :debug
   config.log_tags = [ :request_id ]
   config.action_mailer.perform_caching = false
