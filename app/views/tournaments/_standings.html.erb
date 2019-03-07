@@ -1,11 +1,13 @@
 <div class="row">
   <div class="col">
-    <table class="table">
+    <h3>Group A</h3>
+    <table class="table tournament-standings">
       <thead>
         <tr>
           <th>Team</th>
           <th>Record</th>
           <th>Score</th>
+          <th>Wins</th>
           <th>Margin</th>
         </tr>
       </thead>
@@ -13,16 +15,17 @@
         <% teams.where(group: "A").each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
-            <td>2-2</td>
-            <td>6</td>
-            <td>1.7</td>
+            <td>0-0</td>
+            <td>0</td>
+            <td>0</td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
   <div class="col">
-    <table class="table">
+    <h3>Group B</h3>
+    <table class="table tournament-standings">
       <thead>
         <tr>
           <th>Team</th>
@@ -36,16 +39,17 @@
         <% teams.where(group: "B").each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
-            <td>2-2</td>
-            <td>6</td>
-            <td>1.7</td>
+            <td>0-0</td>
+            <td>0</td>
+            <td>0</td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
   <div class="col">
-    <table class="table table-striped">
+    <h3>Group C</h3>
+    <table class="table tournament-standings">
       <thead>
         <tr>
           <th>Team</th>
@@ -55,10 +59,21 @@
           <th>Margin</th>
         </tr>
       </thead>
+      <tbody>
+        <% teams.where(group: "C").each do |team| %>
+          <tr>
+            <td><%= team.team.name %></td>
+            <td>0-0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
   <div class="col">
-    <table class="table table-striped">
+    <h3>Group D</h3>
+    <table class="table tournament-standings">
       <thead>
         <tr>
           <th>Team</th>
@@ -68,6 +83,16 @@
           <th>Margin</th>
         </tr>
       </thead>
+      <tbody>
+        <% teams.where(group: "D").each do |team| %>
+          <tr>
+            <td><%= team.team.name %></td>
+            <td>0-0</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>
