@@ -8,11 +8,15 @@ class MicropostsController < ApplicationController
       ActionCable.server.broadcast "coverage_channel",
         content: micropost.display_content,
         user: micropost.user,
-        time: micropost.created_at.strftime("%I:%M %p")
+        time: format_time(micropost.created_at)
     end
   end
 
   def micropost_params
     params.require(:micropost).permit(:content).merge(tournament_id: params[:tournament_id])
+  end
+
+  def format_time(time)
+    time.strftime("%I:%M %p")
   end
 end
