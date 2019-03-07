@@ -1,6 +1,6 @@
 module ApplicationHelper
   def markdown(text)
-    coderayified = CodeRayify.new(hard_wrap: true)
+    coderayified = CodeRayify.new()
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
