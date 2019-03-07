@@ -28,6 +28,7 @@ gem "redcarpet"
 gem "coderay"
 gem "devise"
 gem "aws-sdk-s3"
+gem "redis"
 
 group :development do
   gem "listen"
