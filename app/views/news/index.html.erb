@@ -30,7 +30,7 @@
                 <%= link_to "more", news_path(post) %>
               </div>
               <small class="text-muted">
-                <%= l post.created_at %>
+                <%= l post.created_at, format: :date %>
               </small>
             </div>
           </div>

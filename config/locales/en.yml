@@ -14,6 +14,8 @@ en:
         "%b %-d, %Y"
       short:
         "%B %d"
+      time:
+        "%I:%M %p"
 
   titles:
     application: Paintball Sports Network

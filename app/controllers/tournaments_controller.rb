@@ -7,7 +7,7 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament = Tournament.find(params[:id])
-    @microposts = @tournament.microposts.all
+    @microposts = @tournament.microposts.includes(:user).all
     @post = @tournament.microposts.new
   end
 

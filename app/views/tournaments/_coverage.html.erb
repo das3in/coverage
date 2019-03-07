@@ -1,8 +1,14 @@
 <div class="list-group" id="coverage-feed">
   <% posts.each do |post| %>
     <div class="list-group-item d-flex justify-content-between align-items-center">
-      <span class="badge badge-primary badge-pill p-4" style="margin-right: 1em;"><%= posts.user.display_name %></span>
-      <%= post.content %>
+      <div class="row align-items-center" style="width: 100%">
+        <div class="col-1">
+          <%= image_tag(gravatar_url(post.user.email, 64), class: "rounded-circle") %>
+        </div>
+        <div class="col-11">
+          <strong><%= l post.created_at, format: :time %>:</strong> <%= post.content %>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

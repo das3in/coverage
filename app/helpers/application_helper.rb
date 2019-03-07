@@ -18,5 +18,9 @@ module ApplicationHelper
     markdown_to_html = Redcarpet::Markdown.new(coderayified, options)
     markdown_to_html.render(text).html_safe
   end
-end
 
+  def gravatar_url(email, size)
+    gravatar = Digest::MD5::hexdigest(email).downcase
+    "http://gravatar.com/avatar/#{gravatar}.png?s=#{size}"
+  end
+end

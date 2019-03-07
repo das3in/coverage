@@ -7,7 +7,9 @@ class MicropostsController < ApplicationController
     if micropost.save
       ActionCable.server.broadcast "coverage_channel",
         content: micropost.content,
-        user: micropost.user.display_name
+        user: micropost.user.display_name,
+        avatar: micropost.user.email,
+        time: micropost.created_at.strftime("%I:%M %p")
     end
   end
 
