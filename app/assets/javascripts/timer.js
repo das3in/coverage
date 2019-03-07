@@ -5,11 +5,11 @@ function getTimeRemaining(endtime) {
   var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
   var days = Math.floor(t / (1000 * 60 * 60 * 24));
   return {
-    'total': t,
-    'days': days,
-    'hours': hours,
-    'minutes': minutes,
-    'seconds': seconds
+    total: t,
+    days: days,
+    hours: hours,
+    minutes: minutes,
+    seconds: seconds,
   };
 }
 
@@ -37,4 +37,4 @@ function initializeClock(id, endtime) {
   var timeinterval = setInterval(updateClock, 1000);
 }
 
-initializeClock('clockdiv', new Date('2019-03-09'));
+initializeClock('clockdiv', new Date('2019-03-08'));
