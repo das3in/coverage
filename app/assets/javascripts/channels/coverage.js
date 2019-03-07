@@ -13,7 +13,10 @@ App.coverage = App.cable.subscriptions.create('CoverageChannel', {
         '<div class="list-group-item d-flex justify-content-between align-items-center">' +
           '<div class="row align-items-center" style="width: 100%">' +
           '<div class="col-1">' +
-          `<img class="rounded-circle" src=${getGravatar(data.avatar, 64)} />` +
+          `<img class="rounded-circle" src=${getGravatar(
+            data.user.email,
+            64,
+          )} />` +
           '</div>' +
           '<div class="col-11">' +
           '<strong>' +

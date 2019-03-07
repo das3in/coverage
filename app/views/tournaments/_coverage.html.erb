@@ -6,7 +6,7 @@
           <%= image_tag(gravatar_url(post.user.email, 64), class: "rounded-circle") %>
         </div>
         <div class="col-11">
-          <strong><%= l post.created_at, format: :time %>:</strong> <%= post.content %>
+          <strong><%= l post.created_at, format: :time %>:</strong><%= post.display_content %>
         </div>
       </div>
     </div>
