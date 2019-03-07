@@ -180,7 +180,7 @@ h6 {
   background-size: cover;
 }
 
-#clockdiv{
+#clockdiv {
   font-family: sans-serif;
   color: #fff;
   display: inline-block;
@@ -189,19 +189,19 @@ h6 {
   font-size: 30px;
 }
 
-#clockdiv > div{
+#clockdiv > div {
   padding: 10px;
   border-radius: 3px;
   display: inline-block;
 }
 
-#clockdiv div > span{
+#clockdiv div > span {
   padding: 15px;
   border-radius: 3px;
   display: inline-block;
 }
 
-.smalltext{
+.smalltext {
   padding-top: 5px;
   font-size: 16px;
 }
@@ -224,7 +224,8 @@ h6 {
   color: #000;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
   color: #000;
   background: #fff;
   border-bottom: 1px solid #000;
@@ -235,4 +236,52 @@ h6 {
 .nav-pills {
   display: flex;
   justify-content: center;
+}
+
+.logo-image {
+  max-width: 100%;
+  transform: scale(0.7);
+}
+
+.sponsor-image {
+  max-width: 100%;
+  transform: scale(0.8);
+}
+
+.prediction-box {
+  padding: 1em;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.predictions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.prediction {
+  background-color: white;
+  padding: 10px;
+  width: 100%;
+  margin: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.prediction:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.scoreBox {
+  float: right;
+  width: 20%;
+  text-align: center;
+}
+.winner {
+  background-color: rgba(51, 170, 51, 0.4);
+}
+.loser {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .prediction {
+    width: 100%;
+  }
 }

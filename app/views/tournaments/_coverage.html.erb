@@ -1,16 +1,71 @@
-<div class="list-group" id="coverage-feed">
-  <% posts.each do |post| %>
-    <div class="list-group-item d-flex justify-content-between align-items-center">
-      <div class="row align-items-center" style="width: 100%">
-        <div class="col-1">
-          <%= image_tag(gravatar_url(post.user.email, 64), class: "rounded-circle") %>
+<div class="row">
+  <div class="col-9">
+    <div class="list-group" id="coverage-feed">
+      <% posts.each do |post| %>
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+          <div class="row align-items-center" style="width: 100%">
+            <div class="col-2">
+              <%= image_tag(gravatar_url(post.user.email, 64), class: "rounded-circle") %>
+            </div>
+            <div class="col-10">
+              <%= post.display_content %>
+            </div>
+          </div>
         </div>
-        <div class="col-11">
-          <strong><%= l post.created_at, format: :time %>:</strong><%= post.display_content %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-3">
+    <h3 class="text-center">Current Set</h3>
+    <div class="predictions">
+      <div class="prediction">
+        <div class="team-row">
+          <h5>Dynasty
+            <span class="scoreBox">
+              63%
+            </span>
+            <span class="scoreBox">
+              0 
+            </span>
+          </h5>
+        </div>
+        <div class="team-row">
+          <h5>Damage
+            <span class="scoreBox">
+              37%
+            </span>
+            <span class="scoreBox">
+              0
+            </span>
+          </h5>
         </div>
       </div>
     </div>
-  <% end %>
+    <div class="predictions">
+      <div class="prediction">
+        <div class="team-row">
+          <h5>Uprising
+            <span class="scoreBox">
+              61%
+            </span>
+            <span class="scoreBox">
+              0 
+            </span>
+          </h5>
+        </div>
+        <div class="team-row">
+          <h5>Boom
+            <span class="scoreBox">
+              39%
+            </span>
+            <span class="scoreBox">
+              0
+            </span>
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <hr />
