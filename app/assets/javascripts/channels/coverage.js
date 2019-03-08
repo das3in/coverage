@@ -18,7 +18,7 @@ App.coverage = App.cable.subscriptions.create('CoverageChannel', {
             64,
           )} />` +
           '</div>' +
-          '<div class="col-10">' +
+          '<div class="col-10 pl-5">' +
           data.content +
           '</div>' +
           '</div>' +
