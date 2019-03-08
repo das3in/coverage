@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_005703) do
+ActiveRecord::Schema.define(version: 2019_03_08_011748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,6 +111,18 @@ ActiveRecord::Schema.define(version: 2019_03_08_005703) do
     t.index ["tournament_id"], name: "index_posts_on_tournament_id"
   end
 
+  create_table "predictions", force: :cascade do |t|
+    t.bigint "match_id"
+    t.float "home_team_guess", default: 0.0
+    t.float "away_team_guess", default: 0.0
+    t.bigint "winner_guess_id"
+    t.boolean "correct", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_predictions_on_match_id"
+    t.index ["winner_guess_id"], name: "index_predictions_on_winner_guess_id"
+  end
+
   create_table "rating_changes", force: :cascade do |t|
     t.bigint "team_id"
     t.integer "old_rating"
@@ -180,6 +192,8 @@ ActiveRecord::Schema.define(version: 2019_03_08_005703) do
   add_foreign_key "microposts", "tournaments"
   add_foreign_key "microposts", "users"
   add_foreign_key "posts", "tournaments"
+  add_foreign_key "predictions", "matches"
+  add_foreign_key "predictions", "teams", column: "winner_guess_id"
   add_foreign_key "rating_changes", "matches"
   add_foreign_key "rating_changes", "teams"
   add_foreign_key "rating_changes", "tournaments"

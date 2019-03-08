@@ -4,6 +4,8 @@ class Match < ApplicationRecord
   belongs_to :winner, class_name: "Team", optional: true
   belongs_to :tournament
 
+  has_one :prediction
+
   after_save :update_ratings
 
   enum round: ["Prelims", "Wild Card", "Quarterfinals", "Semifinals", "Finals"]

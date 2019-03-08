@@ -1,4 +1,12 @@
 FactoryBot.define do
+  factory :prediction do
+    match { nil }
+    home_team_guess { 1.5 }
+    away_team_guess { 1.5 }
+    winner_guess { nil }
+    correct { false }
+  end
+
   factory :micropost do
     author { nil }
     content { "MyString" }
