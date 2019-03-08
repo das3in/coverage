@@ -18,52 +18,30 @@
   <div class="col-3">
     <h3 class="text-center">Current Set</h3>
     <div class="predictions">
-      <div class="prediction">
-        <div class="team-row">
-          <h5>Dynasty
-            <span class="scoreBox">
-              63%
-            </span>
-            <span class="scoreBox">
-              0 
-            </span>
-          </h5>
+      <% @tournament.matches.where(current: true).each do |match| %>
+        <div class="prediction">
+          <div class="team-row">
+            <h5><%= match.home_team.name %>
+              <span class="scoreBox">
+                63%
+              </span>
+              <span class="scoreBox" id="home-team-<%= match.home_team_id %>">
+                <%= match.home_team_score %>
+              </span>
+            </h5>
+          </div>
+          <div class="team-row">
+            <h5><%= match.away_team.name %>
+              <span class="scoreBox">
+                37%
+              </span>
+              <span class="scoreBox" id="away-team-<%= match.away_team_id %>" >
+                <%= match.away_team_score %>
+              </span>
+            </h5>
+          </div>
         </div>
-        <div class="team-row">
-          <h5>Damage
-            <span class="scoreBox">
-              37%
-            </span>
-            <span class="scoreBox">
-              0
-            </span>
-          </h5>
-        </div>
-      </div>
-    </div>
-    <div class="predictions">
-      <div class="prediction">
-        <div class="team-row">
-          <h5>Uprising
-            <span class="scoreBox">
-              61%
-            </span>
-            <span class="scoreBox">
-              0 
-            </span>
-          </h5>
-        </div>
-        <div class="team-row">
-          <h5>Boom
-            <span class="scoreBox">
-              39%
-            </span>
-            <span class="scoreBox">
-              0
-            </span>
-          </h5>
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

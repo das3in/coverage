@@ -1,0 +1,15 @@
+<h1>All Matches</h1>
+
+<%= link_to "New Match", new_tournament_match_path(@tournament), class: "btn btn-primary" %>
+
+<div class="list-group">
+<% @tournament.matches.each do |match| %>
+  <div class="list-group-item">
+    <%= link_to edit_tournament_match_path(@tournament, match) do %>
+      <%= match.home_team.name %> - <%= match.home_team_score %>
+      vs
+      <%= match.away_team.name %>  - <%= match.away_team_score %>
+    <% end %>
+    </div>
+<% end %>
+</div>
