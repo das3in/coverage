@@ -5,7 +5,7 @@ class Micropost < ApplicationRecord
   scope :for_display, -> { order(created_at: :desc).last(50) }
 
   def display_content
-    coderayified = CodeRayify.new(filter_html: true, hard_wrap: true)
+    coderayified = CodeRayify.new(hard_wrap: true)
     options = {
       :fenced_code_blocks => true,
       :no_intra_emphasis => true,
