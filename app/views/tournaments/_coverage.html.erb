@@ -22,8 +22,8 @@
         <div class="prediction">
           <div class="team-row">
             <h5><%= match.home_team.name %>
-              <span class="scoreBox">
-                63%
+            <span class="scoreBox <%= match.prediction.home_team_guess > match.prediction.away_team_guess ? "winner" : "loser" %>">
+              <%= (match.prediction.home_team_guess * 100).round(2) %>%
               </span>
               <span class="scoreBox" id="home-team-<%= match.home_team_id %>">
                 <%= match.home_team_score %>
@@ -32,8 +32,8 @@
           </div>
           <div class="team-row">
             <h5><%= match.away_team.name %>
-              <span class="scoreBox">
-                37%
+            <span class="scoreBox <%= match.prediction.away_team_guess > match.prediction.home_team_guess ? "winner" : "loser" %>">
+              <%= (match.prediction.away_team_guess * 100).round(2) %>%
               </span>
               <span class="scoreBox" id="away-team-<%= match.away_team_id %>" >
                 <%= match.away_team_score %>
