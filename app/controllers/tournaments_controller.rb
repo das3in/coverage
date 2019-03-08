@@ -11,6 +11,14 @@ class TournamentsController < ApplicationController
     @post = @tournament.microposts.new
   end
 
+  def live_notifications
+    @tournament = Tournament.find(params[:id])
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @tournament = Tournament.new
     @leagues = League.all

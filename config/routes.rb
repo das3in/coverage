@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   end
   resources :posts
 
+  get "/tournaments/:id/live_updates" => "tournaments#live_notifications"
+
   mount ActionCable.server, at: "/cable"
 end

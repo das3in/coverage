@@ -17,32 +17,7 @@
   </div>
   <div class="col-3">
     <h3 class="text-center">Current Set</h3>
-    <div class="predictions">
-      <% @tournament.matches.where(current: true).each do |match| %>
-        <div class="prediction">
-          <div class="team-row">
-            <h5><%= match.home_team.name %>
-            <span class="scoreBox <%= match.prediction.home_team_guess > match.prediction.away_team_guess ? "winner" : "loser" %>">
-              <%= (match.prediction.home_team_guess * 100).round(2) %>%
-              </span>
-              <span class="scoreBox" id="home-team-<%= match.home_team_id %>">
-                <%= match.home_team_score %>
-              </span>
-            </h5>
-          </div>
-          <div class="team-row">
-            <h5><%= match.away_team.name %>
-            <span class="scoreBox <%= match.prediction.away_team_guess > match.prediction.home_team_guess ? "winner" : "loser" %>">
-              <%= (match.prediction.away_team_guess * 100).round(2) %>%
-              </span>
-              <span class="scoreBox" id="away-team-<%= match.away_team_id %>" >
-                <%= match.away_team_score %>
-              </span>
-            </h5>
-          </div>
-        </div>
-      <% end %>
-    </div>
+    <%= render "current", tournament: @tournament %>
   </div>
 </div>
 

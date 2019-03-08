@@ -8,16 +8,15 @@
           <th>Record</th>
           <th>Score</th>
           <th>Wins</th>
-          <th>Margin</th>
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "A").each do |team| %>
+        <% teams.where(group: "A").order(:wins).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
-            <td>0-0</td>
-            <td>0</td>
-            <td>0</td>
+            <td><%= team.wins %> - <%= team.losses %></td>
+            <td><%= team.points %></td>
+            <td><%= team.wins %></td>
           </tr>
         <% end %>
       </tbody>
@@ -32,16 +31,15 @@
           <th>Record</th>
           <th>Score</th>
           <th>Wins</th>
-          <th>Margin</th>
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "B").each do |team| %>
+        <% teams.where(group: "B").order(:wins).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
-            <td>0-0</td>
-            <td>0</td>
-            <td>0</td>
+            <td><%= team.wins %> - <%= team.losses %></td>
+            <td><%= team.points %></td>
+            <td><%= team.wins %></td>
           </tr>
         <% end %>
       </tbody>
@@ -56,16 +54,15 @@
           <th>Record</th>
           <th>Score</th>
           <th>Wins</th>
-          <th>Margin</th>
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "C").each do |team| %>
+        <% teams.where(group: "C").order(:wins).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
-            <td>0-0</td>
-            <td>0</td>
-            <td>0</td>
+            <td><%= team.wins %> - <%= team.losses %></td>
+            <td><%= team.points %></td>
+            <td><%= team.wins %></td>
           </tr>
         <% end %>
       </tbody>
@@ -80,16 +77,15 @@
           <th>Record</th>
           <th>Score</th>
           <th>Wins</th>
-          <th>Margin</th>
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "D").each do |team| %>
+        <% teams.where(group: "D").order(:wins).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
-            <td>0-0</td>
-            <td>0</td>
-            <td>0</td>
+            <td><%= team.wins %> - <%= team.losses %></td>
+            <td><%= team.points %></td>
+            <td><%= team.wins %></td>
           </tr>
         <% end %>
       </tbody>
