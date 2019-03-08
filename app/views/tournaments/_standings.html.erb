@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "A").order(:wins).each do |team| %>
+        <% teams.where(group: "A").order(wins: :desc).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
             <td><%= team.wins %> - <%= team.losses %></td>
@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "B").order(:wins).each do |team| %>
+        <% teams.where(group: "B").order(wins: :desc).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
             <td><%= team.wins %> - <%= team.losses %></td>
@@ -57,7 +57,7 @@
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "C").order(:wins).each do |team| %>
+        <% teams.where(group: "C").order(wins: :desc).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
             <td><%= team.wins %> - <%= team.losses %></td>
@@ -80,7 +80,7 @@
         </tr>
       </thead>
       <tbody>
-        <% teams.where(group: "D").order(:wins).each do |team| %>
+        <% teams.where(group: "D").order(wins: :desc).each do |team| %>
           <tr>
             <td><%= team.team.name %></td>
             <td><%= team.wins %> - <%= team.losses %></td>
