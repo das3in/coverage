@@ -13,7 +13,10 @@ class MicropostsController < ApplicationController
   end
 
   def micropost_params
-    params.require(:micropost).permit(:content).merge(tournament_id: params[:tournament_id])
+    params.require(:micropost).permit(:content).merge(
+      tournament_id: params[:tournament_id],
+      day: "Saturday",
+    )
   end
 
   def format_time(time)

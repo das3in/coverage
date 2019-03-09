@@ -16,7 +16,7 @@
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="coverage" role="tabpanel" aria-labelledby="coverage-tab">
     <br />
-    <%= render "coverage", posts: @microposts.order(created_at: :desc), tournament: @tournament %>
+    <%= render "coverage", posts: @microposts.where(day: "Saturday").order(created_at: :desc), tournament: @tournament %>
   </div>
   <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab">
     <br />
