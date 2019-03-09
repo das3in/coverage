@@ -1,3 +1,9 @@
 <h2>Edit Match</h2>
 
 <%= render "form", match: @match, tournament: @tournament %>
+
+<% if @match.prediction %>
+  <h3>Already Predicted</h3>
+<% else %>
+  <%= button_to "Predict", "/matches/#{@match.id}/generate_prediction/" %>
+<% end %>

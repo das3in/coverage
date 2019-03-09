@@ -36,6 +36,13 @@ class MatchesController < ApplicationController
     end
   end
 
+  def generate_prediction
+    @match = Match.find(params[:id])
+    PredictionGenerator.new(@match).run
+
+    redirect_to edit_tournament_match_path(@match.tournament, @match)
+  end
+
   private
 
   def match_params
@@ -47,6 +54,8 @@ class MatchesController < ApplicationController
       :round,
       :winner_id,
       :completed,
+      :current,
+      :day,
     )
   end
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :posts
 
   get "/tournaments/:id/live_updates" => "tournaments#live_notifications"
+  post "/matches/:id/generate_prediction" => "matches#generate_prediction"
 
   mount ActionCable.server, at: "/cable"
 end

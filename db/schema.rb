@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_134640) do
+ActiveRecord::Schema.define(version: 2019_03_09_140910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_134640) do
     t.datetime "updated_at", null: false
     t.boolean "completed", default: false
     t.boolean "current"
+    t.string "day", default: "Friday"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
     t.index ["tournament_id"], name: "index_matches_on_tournament_id"
@@ -168,6 +169,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_134640) do
     t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "current_day", default: "Friday"
     t.index ["league_id"], name: "index_tournaments_on_league_id"
   end
 
