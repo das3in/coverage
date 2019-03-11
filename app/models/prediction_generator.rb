@@ -11,6 +11,7 @@ class PredictionGenerator
       home_team_guess: expected_home_team,
       away_team_guess: expected_away_team,
       winner_guess: expected_winner,
+      correct: correct,
     )
   end
 
