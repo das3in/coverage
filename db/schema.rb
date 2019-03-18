@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_09_145613) do
+ActiveRecord::Schema.define(version: 2019_03_18_180028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,11 +71,8 @@ ActiveRecord::Schema.define(version: 2019_03_09_145613) do
   end
 
   create_table "matches", force: :cascade do |t|
-    t.bigint "home_team_id"
-    t.bigint "away_team_id"
     t.integer "home_team_score", default: 0
     t.integer "away_team_score", default: 0
-    t.bigint "winner_id"
     t.integer "round", default: 0
     t.bigint "tournament_id"
     t.datetime "created_at", null: false
@@ -83,6 +80,9 @@ ActiveRecord::Schema.define(version: 2019_03_09_145613) do
     t.boolean "completed", default: false
     t.boolean "current"
     t.string "day", default: "Friday"
+    t.bigint "home_team_id"
+    t.bigint "away_team_id"
+    t.bigint "winner_id"
     t.index ["away_team_id"], name: "index_matches_on_away_team_id"
     t.index ["home_team_id"], name: "index_matches_on_home_team_id"
     t.index ["tournament_id"], name: "index_matches_on_tournament_id"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2019_03_09_145613) do
     t.string "slug"
     t.string "description"
     t.text "body"
-    t.boolean "draft"
+    t.boolean "draft", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "tournament_id"
@@ -191,9 +191,9 @@ ActiveRecord::Schema.define(version: 2019_03_09_145613) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "matches", "teams", column: "away_team_id"
-  add_foreign_key "matches", "teams", column: "home_team_id"
-  add_foreign_key "matches", "teams", column: "winner_id"
+  add_foreign_key "matches", "registered_teams", column: "away_team_id"
+  add_foreign_key "matches", "registered_teams", column: "home_team_id"
+  add_foreign_key "matches", "registered_teams", column: "winner_id"
   add_foreign_key "matches", "tournaments"
   add_foreign_key "microposts", "tournaments"
   add_foreign_key "microposts", "users"
