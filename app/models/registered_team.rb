@@ -7,4 +7,8 @@ class RegisteredTeam < ApplicationRecord
   def points
     wins * POINTS_MULTIPLIER
   end
+
+  def matches
+    Match.where("home_team_id=? OR away_team_id=?", id, id)
+  end
 end

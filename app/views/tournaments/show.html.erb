@@ -1,4 +1,4 @@
-<%= image_tag(@tournament.thumbnail, class: "img-responsive", style: "width: 100%;") %>
+<%= image_tag(@tournament.thumbnail, class: "img-responsive", style: "width: 100%;") if @tournament.thumbnail.attached? %>
 <hr />
 
 <ul class="nav nav-pills" id="myTab" role="tablist">

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   friendly_id :slug_candidates, use: :slugged
 
   has_many :microposts
+  has_many :posts
 
   def display_name
     first_name + " " + last_name

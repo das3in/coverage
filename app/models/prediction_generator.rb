@@ -1,8 +1,8 @@
 class PredictionGenerator
   def initialize(match)
     @match = match
-    @home_team = match.home_team
-    @away_team = match.away_team
+    @home_team = match.home_team.team
+    @away_team = match.away_team.team
   end
 
   def run

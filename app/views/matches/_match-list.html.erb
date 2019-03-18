@@ -2,9 +2,9 @@
   <% matches.each do |match| %>
     <div class="list-group-item">
       <%= link_to edit_tournament_match_path(tournament, match) do %>
-        <%= match.home_team.name %> - <%= match.home_team_score %>
+        <%= match.home_team.team.name %> - <%= match.home_team_score %>
         vs
-        <%= match.away_team.name %>  - <%= match.away_team_score %>
+        <%= match.away_team.team.name %>  - <%= match.away_team_score %>
       <% end %>
     </div>
   <% end %>

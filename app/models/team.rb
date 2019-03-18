@@ -18,15 +18,8 @@ class Team < ApplicationRecord
     location + "  " + name
   end
 
-  def matches
-    Match.where("home_team_id=? OR away_team_id=?", id, id)
-  end
-
-  def wins
-    matches.where(winner: self)
-  end
-
-  def losses
-    matches.where.not(winner: self)
+  def tournament_matches(tournament)
+    rt = registered_teams.find_by(tournament: tournament)
+    rt.matches
   end
 end

@@ -1,7 +1,9 @@
 <% @tournaments.each do |tournament| %>
   <%= link_to tournament_path(tournament) do %>
     <div class="card">
+      <% if tournament.thumbnail.attached? %>
       <%= image_tag(tournament.thumbnail, class: "card-img-top") %>
+      <% end %>
       <div class="card-body">
         <h4 class="card-text"><%= tournament.name %></h4>
       </div>

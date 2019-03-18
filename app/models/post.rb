@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
 
   belongs_to :tournament, optional: true
+  belongs_to :user
 
   scope :published, -> { where(draft: false) }
 
