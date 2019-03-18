@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  delegate :url_helpers, to: 'Rails.application.routes' 
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 
@@ -10,4 +12,8 @@ class Post < ApplicationRecord
   validates_presence_of :title, :slug, :body
 
   has_one_attached :thumbnail
+
+  def url
+    "/api/v1" + url_helpers.news_path(self)
+  end
 end

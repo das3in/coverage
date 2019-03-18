@@ -29,6 +29,8 @@ gem "coderay"
 gem "devise"
 gem "aws-sdk-s3"
 gem "redis"
+gem "jbuilder"
+gem "responders"
 
 group :development do
   gem "listen"

@@ -33,8 +33,8 @@ function initializeClock(id, endtime) {
     }
   }
 
-  updateClock();
-  var timeinterval = setInterval(updateClock, 1000);
+  // updateClock();
+  // var timeinterval = setInterval(updateClock, 1000);
 }
 
 //initializeClock('clockdiv', new Date('2019-03-08T07:20:00'));

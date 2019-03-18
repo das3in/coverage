@@ -1,0 +1,8 @@
+<div class="blog-post">
+  <h2 class="blog-post-title"><%= @post.title %></h2>
+  <p class="blog-post-meta"><%= l @post.created_at, format: :date %> - Carl Reyes</p>
+
+  <p><%= @post.description %></p>
+  <hr>
+  <p><%= markdown(@post.body) %></p>
+</div>
