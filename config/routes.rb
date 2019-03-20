@@ -7,9 +7,9 @@ Rails.application.routes.draw do
       resources :posts
       resources :news, only: [:show]
       resources :tournaments
-
       post "/tournaments/:id/create_field" => "tournaments#create_field"
       post "/tournaments/:tournamentId/matches/:id/create_point" => "matches#create_point"
+      post "/users/sign_in" => "sessions#create"
     end
   end
 
