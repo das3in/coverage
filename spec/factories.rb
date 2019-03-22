@@ -1,4 +1,10 @@
 FactoryBot.define do
+  sequence(:title) { |n| "Title ##{n}" }
+  sequence(:description) { |n| "Description for post ##{n}" }
+  sequence(:slug) { |n| "title-#{n}-slug" }
+  sequence(:first_name) { |n| "#{n}ohn" }
+  sequence(:last_name) { |n| "#{n}mith" }
+
   factory :prediction do
     match { nil }
     home_team_guess { 1.5 }
@@ -54,15 +60,20 @@ FactoryBot.define do
   end
 
   factory :user do
-    
+    first_name
+    last_name
+    authentication_token { "random_string" }
   end
 
   factory :post do
-    title { "MyString" }
-    slug { "MyString" }
-    description { "MyString" }
+    title
+    slug
+    description
     body { "MyString" }
     draft { false }
-  end
 
+    trait :with_thumbnail do
+      thumbnail { fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test-image.png'), 'image/png') }
+    end
+  end
 end
