@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :matches
     resources :microposts, only: [:create]
   end
+  resources :pickems
   resources :posts
 
   get "/tournaments/:id/live_updates" => "tournaments#live_notifications"

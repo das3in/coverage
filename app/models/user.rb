@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :microposts
   has_many :posts
 
+  has_many :pickem_players
+  has_many :pickems, through: :pickem_players
+
   def display_name
     first_name + " " + last_name
   end

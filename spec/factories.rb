@@ -4,6 +4,14 @@ FactoryBot.define do
   sequence(:slug) { |n| "title-#{n}-slug" }
   sequence(:first_name) { |n| "#{n}ohn" }
   sequence(:last_name) { |n| "#{n}mith" }
+  sequence(:name) { |n| "#{n}ame" }
+
+  factory :pickem do
+    name
+    start_date { "2019-03-23" }
+    end_date { "2019-03-23" }
+    tournament { nil }
+  end
 
   factory :prediction do
     match { nil }
@@ -43,20 +51,20 @@ FactoryBot.define do
   end
 
   factory :tournament do
-    name { "MyString" }
+    name
     league { nil }
     start_date { "2019-03-05" }
     end_date { "2019-03-05" }
   end
 
   factory :league do
-    name { "MyString" }
+    name
     slug { "MyString" }
   end
 
   factory :team do
     location { "MyString" }
-    name { "MyString" }
+    name
   end
 
   factory :user do

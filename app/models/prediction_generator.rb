@@ -37,6 +37,10 @@ class PredictionGenerator
   end
 
   def correct
+    if !expected_winner
+      return false
+    end
+    
     if expected_winner == match.winner
       return true
     end

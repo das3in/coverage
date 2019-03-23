@@ -1,0 +1,16 @@
+<h1>Pickem <%= @pickem.tournament.name %></h1>
+
+<div class="list-group">
+  <% @pickem.tournament.matches.each do |match| %>
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col">
+          <%= match.home_team.team.name %>
+        </div>
+        <div class="col">
+          <%= match.away_team.team.name %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

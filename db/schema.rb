@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_20_001745) do
+ActiveRecord::Schema.define(version: 2019_03_23_122009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,39 @@ ActiveRecord::Schema.define(version: 2019_03_20_001745) do
     t.string "day", default: "Friday"
     t.index ["tournament_id"], name: "index_microposts_on_tournament_id"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "pickem_guesses", force: :cascade do |t|
+    t.bigint "pickem_id"
+    t.bigint "match_id"
+    t.bigint "guess_id"
+    t.boolean "correct", default: false
+    t.boolean "locked", default: false
+    t.boolean "completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guess_id"], name: "index_pickem_guesses_on_guess_id"
+    t.index ["match_id"], name: "index_pickem_guesses_on_match_id"
+    t.index ["pickem_id"], name: "index_pickem_guesses_on_pickem_id"
+  end
+
+  create_table "pickem_players", force: :cascade do |t|
+    t.bigint "pickem_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pickem_id"], name: "index_pickem_players_on_pickem_id"
+    t.index ["user_id"], name: "index_pickem_players_on_user_id"
+  end
+
+  create_table "pickems", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_pickems_on_tournament_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -203,6 +236,12 @@ ActiveRecord::Schema.define(version: 2019_03_20_001745) do
   add_foreign_key "matches", "tournaments"
   add_foreign_key "microposts", "tournaments"
   add_foreign_key "microposts", "users"
+  add_foreign_key "pickem_guesses", "matches"
+  add_foreign_key "pickem_guesses", "pickems"
+  add_foreign_key "pickem_guesses", "registered_teams", column: "guess_id"
+  add_foreign_key "pickem_players", "pickems"
+  add_foreign_key "pickem_players", "users"
+  add_foreign_key "pickems", "tournaments"
   add_foreign_key "posts", "tournaments"
   add_foreign_key "posts", "users"
   add_foreign_key "predictions", "matches"

@@ -5,5 +5,6 @@ class Tournament < ApplicationRecord
   has_many :matches
   has_many :posts
   has_many :microposts
+  has_many :pickems
   has_one_attached :thumbnail
 end

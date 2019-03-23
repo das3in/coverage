@@ -16,8 +16,8 @@ class EloRatingCalculator
   end
 
   def initialize(match)
-    @team_a = match.home_team
-    @team_b = match.away_team
+    @team_a = match.home_team.team
+    @team_b = match.away_team.team
     @home_team_score = match.home_team_score
     @away_team_score = match.away_team_score
     @winner = match.winner
