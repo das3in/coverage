@@ -1,5 +1,18 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe User do
+  context "associations" do
+    it { should have_many(:microposts) }
+    it { should have_many(:posts) }
+    it { should have_many(:pickem_players) }
+    it { should have_many(:pickems) }
+  end
+
+  describe "#display_name" do
+    it "should display the first and last name with a space" do
+      user = create(:user, first_name: "John", last_name: "Smith")
+
+      expect(user.display_name).to eq("John Smith")
+    end
+  end
 end

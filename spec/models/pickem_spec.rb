@@ -1,5 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Pickem, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Pickem do
+  context "associations" do
+    it { should belong_to(:tournament) }
+    it { should have_many(:pickem_players) }
+    it { should have_many(:users) }
+  end
 end

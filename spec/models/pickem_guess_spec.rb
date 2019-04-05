@@ -1,5 +1,10 @@
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe PickemGuess, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe PickemGuess do
+  context "associations" do
+    it { should belong_to(:pickem) }
+    it { should belong_to(:match) }
+    it { should belong_to(:pickem_player) }
+    it { should belong_to(:guess) }
+  end
 end

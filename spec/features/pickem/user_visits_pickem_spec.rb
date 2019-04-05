@@ -4,7 +4,11 @@ describe "user visits a pickem competition" do
   it "should display a list of matches for the pickem event" do
     tournament = setup_tournament
     pickem = create(:pickem, tournament: tournament)
+    user = create(:user)
 
+    pickem.users << user
+
+    login_as(user, scope: :user)
     visit pickem_path(pickem)
 
     expect(page).to have_content tournament.name
@@ -16,10 +20,10 @@ describe "user visits a pickem competition" do
     league = create(:league)
     t = create(:tournament, league: league)
     teams = [
-      create(:team, current_pbsn_rating: 1600),
-      create(:team, current_pbsn_rating: 1450),
-      create(:team, current_pbsn_rating: 1200),
-      create(:team, current_pbsn_rating: 1300),
+      create(:team, :with_avatar, current_pbsn_rating: 1600),
+      create(:team, :with_avatar, current_pbsn_rating: 1450),
+      create(:team, :with_avatar, current_pbsn_rating: 1200),
+      create(:team, :with_avatar, current_pbsn_rating: 1300),
     ]
 
     teams.each { |team| t.teams << teams }

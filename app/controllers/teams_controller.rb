@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :delete]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :delete]
 
   def index
     @teams = Team.includes(:avatar_attachment).all
@@ -11,6 +11,20 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+  end
+
+  def edit
+    @team = Team.find(params[:id])
+  end
+
+  def update
+    @team = Team.friendly.find(params[:id])
+
+    if @team.update(team_params)
+      redirect_to teams_path
+    else
+      render :edit
+    end
   end
 
   def create

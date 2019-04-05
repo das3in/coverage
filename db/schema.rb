@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_122009) do
+ActiveRecord::Schema.define(version: 2019_04_03_214638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,9 +110,11 @@ ActiveRecord::Schema.define(version: 2019_03_23_122009) do
     t.boolean "completed", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "pickem_player_id"
     t.index ["guess_id"], name: "index_pickem_guesses_on_guess_id"
     t.index ["match_id"], name: "index_pickem_guesses_on_match_id"
     t.index ["pickem_id"], name: "index_pickem_guesses_on_pickem_id"
+    t.index ["pickem_player_id"], name: "index_pickem_guesses_on_pickem_player_id"
   end
 
   create_table "pickem_players", force: :cascade do |t|
@@ -237,6 +239,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_122009) do
   add_foreign_key "microposts", "tournaments"
   add_foreign_key "microposts", "users"
   add_foreign_key "pickem_guesses", "matches"
+  add_foreign_key "pickem_guesses", "pickem_players"
   add_foreign_key "pickem_guesses", "pickems"
   add_foreign_key "pickem_guesses", "registered_teams", column: "guess_id"
   add_foreign_key "pickem_players", "pickems"

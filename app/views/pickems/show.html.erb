@@ -1,14 +1,20 @@
 <h1>Pickem <%= @pickem.tournament.name %></h1>
 
 <div class="list-group">
-  <% @pickem.tournament.matches.each do |match| %>
+  <% @player.pickem_guesses.each do |guess| %>
     <div class="list-group-item">
       <div class="row">
-        <div class="col">
-          <%= match.home_team.team.name %>
+        <div class="col d-flex justify-content-center align-items-center">
+          <%= image_tag(guess.match.home_team.team.avatar, class: "img-fluid") %>
         </div>
-        <div class="col">
-          <%= match.away_team.team.name %>
+        <div class="col d-flex justify-content-center align-items-center">
+          <%= guess.match.home_team.team.name %>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <%= guess.match.away_team.team.name %>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
+          <%= image_tag(guess.match.away_team.team.avatar, class: "img-fluid") %>
         </div>
       </div>
     </div>

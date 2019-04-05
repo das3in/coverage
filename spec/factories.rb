@@ -65,11 +65,19 @@ FactoryBot.define do
   factory :team do
     location { "MyString" }
     name
+    trait :with_avatar do
+      avatar {
+        fixture_file_upload(Rails.root.join('spec', 'support', 'assets', 'test-image.png'), 'image/png') 
+      }
+    end
   end
 
   factory :user do
     first_name
     last_name
+    email { "test@example.com" }
+    password { "password" }
+    password_confirmation { "password" }
     authentication_token { "random_string" }
   end
 
