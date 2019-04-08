@@ -31,6 +31,7 @@ gem "aws-sdk-s3"
 gem "redis"
 gem "jbuilder"
 gem "responders"
+gem "rack-cors"
 
 group :development do
   gem "listen"
