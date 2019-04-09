@@ -4,7 +4,7 @@ class Team < ApplicationRecord
 
   has_one_attached :avatar
 
-  has_many :registered_teams
+  has_many :registered_teams, dependent: :destroy
   has_many :tournaments, through: :registered_teams
   has_many :rating_changes
 

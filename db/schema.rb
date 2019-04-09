@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_204041) do
+ActiveRecord::Schema.define(version: 2019_04_08_154352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,41 @@ ActiveRecord::Schema.define(version: 2019_03_18_204041) do
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
+  create_table "pickem_guesses", force: :cascade do |t|
+    t.bigint "pickem_id"
+    t.bigint "match_id"
+    t.bigint "guess_id"
+    t.boolean "correct", default: false
+    t.boolean "locked", default: false
+    t.boolean "completed", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "pickem_player_id"
+    t.index ["guess_id"], name: "index_pickem_guesses_on_guess_id"
+    t.index ["match_id"], name: "index_pickem_guesses_on_match_id"
+    t.index ["pickem_id"], name: "index_pickem_guesses_on_pickem_id"
+    t.index ["pickem_player_id"], name: "index_pickem_guesses_on_pickem_player_id"
+  end
+
+  create_table "pickem_players", force: :cascade do |t|
+    t.bigint "pickem_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pickem_id"], name: "index_pickem_players_on_pickem_id"
+    t.index ["user_id"], name: "index_pickem_players_on_user_id"
+  end
+
+  create_table "pickems", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_pickems_on_tournament_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "slug"
@@ -164,6 +199,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_204041) do
     t.integer "current_pbsn_rating", default: 1500
     t.integer "current_coaches_poll"
     t.integer "current_nxl_rank"
+    t.string "division", default: ""
     t.index ["slug"], name: "index_teams_on_slug", unique: true
   end
 
@@ -189,6 +225,8 @@ ActiveRecord::Schema.define(version: 2019_03_18_204041) do
     t.string "first_name"
     t.string "last_name"
     t.string "slug"
+    t.string "authentication_token"
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
@@ -201,6 +239,13 @@ ActiveRecord::Schema.define(version: 2019_03_18_204041) do
   add_foreign_key "matches", "tournaments"
   add_foreign_key "microposts", "tournaments"
   add_foreign_key "microposts", "users"
+  add_foreign_key "pickem_guesses", "matches"
+  add_foreign_key "pickem_guesses", "pickem_players"
+  add_foreign_key "pickem_guesses", "pickems"
+  add_foreign_key "pickem_guesses", "registered_teams", column: "guess_id"
+  add_foreign_key "pickem_players", "pickems"
+  add_foreign_key "pickem_players", "users"
+  add_foreign_key "pickems", "tournaments"
   add_foreign_key "posts", "tournaments"
   add_foreign_key "posts", "users"
   add_foreign_key "predictions", "matches"

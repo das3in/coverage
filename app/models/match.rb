@@ -9,7 +9,7 @@ class Match < ApplicationRecord
 
   after_save :update_ratings, :update_scores
 
-  enum round: ["Prelims", "Wild Card", "Quarterfinals", "Semifinals", "Finals"]
+  enum round: ["Prelims", "Wild Card", "Quarter-finals", "Semi-finals", "Finals"]
 
   def margin
     if winner == home_team
@@ -29,7 +29,7 @@ class Match < ApplicationRecord
         match_id: self.id,
       )
       away_rc = away_team.team.rating_changes.new(
-        old_rating: away_team..team.current_pbsn_rating,
+        old_rating: away_team.team.current_pbsn_rating,
         tournament: tournament,
         match_id: self.id,
       )
@@ -38,7 +38,7 @@ class Match < ApplicationRecord
       calculator.run
 
       home_rc.new_rating = home_team.team.current_pbsn_rating
-      away_rc.new_rating = away_team..team.current_pbsn_rating
+      away_rc.new_rating = away_team.team.current_pbsn_rating
 
       home_rc.save
       away_rc.save
@@ -47,8 +47,8 @@ class Match < ApplicationRecord
 
   def update_scores
     if completed
-      home_rt = home_team.registered_teams.find_by(tournament: tournament)
-      away_rt = away_team.registered_teams.find_by(tournament: tournament)
+      home_rt = home_team
+      away_rt = away_team
 
       if winner == home_team
         home_rt.update(
