@@ -1,5 +1,6 @@
 <%= simple_form_for [tournament, match] do |f| %>
   <div class="row">
+    <input type="hidden" id="tournamentId" value="<%= tournament.id %>" />
     <div class="col">
       <div class="form-group">
         <label for="division-select">Division</label>

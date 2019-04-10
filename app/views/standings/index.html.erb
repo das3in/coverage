@@ -1,22 +1,13 @@
 <h1>Standings</h1>
 
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr>
-      <th>Team</th>
-      <th>PBSN Rating</th>
-      <th>Coaches Poll</th>
-      <th>Current NXL Rank</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.display_name %></td>
-        <td><%= team.current_pbsn_rating %></td>
-        <td><%= team.current_coaches_poll %></td>
-        <td><%= team.current_nxl_rank %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="form-group">
+  <label for="division-select">Division</label>
+  <select class="form-control" id="standings-division-select">
+    <option value="pro">Pro</option>
+    <option value="semipro">Semi-pro</option>
+    <option value="3">Division 3</option>
+    <option value="4">Division 4</option>
+  </select>
+</div>
+
+<%= render "table", teams: @teams %>

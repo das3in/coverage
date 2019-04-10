@@ -1,5 +1,16 @@
 class StandingsController < ApplicationController
   def index
-    @teams = Team.order(current_pbsn_rating: :desc)
+    if params[:division]
+      @teams = Team
+        .where(division: params[:division])
+        .order(current_pbsn_rating: :desc)
+    else
+      @teams = Team.order(current_pbsn_rating: :desc)
+    end
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 end

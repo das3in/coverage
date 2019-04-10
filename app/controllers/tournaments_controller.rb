@@ -19,6 +19,17 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def teams_for_division
+    tournament = Tournament.find(params[:id])
+    registered_teams = tournament.registered_teams.joins(:team).where("teams.division = ? ", params[:division])
+
+    respond_to do |format|
+      format.json {
+        render json: registered_teams, :include => { :team => { :only => :name } }
+      }
+    end
+  end
+
   def new
     @tournament = Tournament.new
     @leagues = League.all
