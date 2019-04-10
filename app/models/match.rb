@@ -7,6 +7,8 @@ class Match < ApplicationRecord
   has_one :prediction, dependent: :destroy
   has_many :rating_changes, dependent: :destroy
 
+  has_many :points
+
   after_save :update_ratings, :update_scores
 
   enum round: ["Prelims", "Wild Card", "Quarter-finals", "Semi-finals", "Finals"]

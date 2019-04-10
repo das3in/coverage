@@ -1,4 +1,30 @@
 FactoryBot.define do
+  factory :point_event do
+    bunkerId { "MyString" }
+    status { "MyString" }
+    eventType { "MyString" }
+    playerId { "MyString" }
+    point { nil }
+  end
+
+  factory :bunker do
+    name { "MyString" }
+    top { 1 }
+    left { 1 }
+    rotation { 1 }
+  end
+
+  factory :field do
+    tournament { nil }
+  end
+
+  factory :point do
+    match { nil }
+    start_time { "MyString" }
+    end_time { "MyString" }
+    winner_id { 1 }
+  end
+
   factory :prediction do
     match { nil }
     home_team_guess { 1.5 }

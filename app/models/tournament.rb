@@ -6,4 +6,6 @@ class Tournament < ApplicationRecord
   has_many :posts
   has_many :microposts
   has_one_attached :thumbnail
+
+  has_one :field
 end

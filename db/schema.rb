@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_180707) do
+ActiveRecord::Schema.define(version: 2019_04_12_213556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,17 @@ ActiveRecord::Schema.define(version: 2019_04_11_180707) do
     t.index ["tournament_id"], name: "index_pickems_on_tournament_id"
   end
 
+  create_table "point_events", force: :cascade do |t|
+    t.string "bunkerId"
+    t.string "status"
+    t.string "eventType"
+    t.string "playerId"
+    t.bigint "point_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["point_id"], name: "index_point_events_on_point_id"
+  end
+
   create_table "points", force: :cascade do |t|
     t.bigint "match_id"
     t.string "start_time"
@@ -278,6 +289,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_180707) do
   add_foreign_key "pickem_players", "pickems"
   add_foreign_key "pickem_players", "users"
   add_foreign_key "pickems", "tournaments"
+  add_foreign_key "point_events", "points"
   add_foreign_key "points", "matches"
   add_foreign_key "points", "registered_teams", column: "winner_id"
   add_foreign_key "posts", "tournaments"
