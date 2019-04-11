@@ -9,6 +9,9 @@
     <a class="nav-link" id="news-tab" data-toggle="tab" href="#news" role="tab" aria-controls="news" aria-selected="false">News</a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" id="predictions-tab" data-toggle="tab" href="#tournament-predictions" role="tab" aria-controls="predictions" aria-selected="false">Predictions</a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" id="standings-tab" data-toggle="tab" href="#standings" role="tab" aria-controls="standings" aria-selected="false">Standings</a>
   </li>
 </ul>
@@ -21,6 +24,10 @@
   <div class="tab-pane fade" id="news" role="tabpanel" aria-labelledby="news-tab">
     <br />
     <%= render "news" %>
+  </div>
+  <div class="tab-pane fade" id="tournament-predictions" role="tabpanel" aria-labelledby="predictions-tab">
+    <br />
+    <%= render "predictions", matches: @tournament.matches %>
   </div>
   <div class="tab-pane fade" id="standings" role="tabpanel" aria-labelledby="standings-tab">
     <br />
