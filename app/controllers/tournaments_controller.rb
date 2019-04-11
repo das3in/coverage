@@ -2,7 +2,7 @@ class TournamentsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
   def index
-    @tournaments = Tournament.order(start_date: :desc).all
+    @leagues = League.includes(:tournaments).all
   end
 
   def show

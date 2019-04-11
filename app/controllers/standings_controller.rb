@@ -5,7 +5,7 @@ class StandingsController < ApplicationController
         .where(division: params[:division])
         .order(current_pbsn_rating: :desc)
     else
-      @teams = Team.order(current_pbsn_rating: :desc)
+      @teams = Team.where(division: "pro").order(current_pbsn_rating: :desc)
     end
 
     respond_to do |format|

@@ -3,22 +3,15 @@
 <% if user_signed_in? %>
   <%= link_to "New team", new_team_path, class: "btn btn-primary" %>
 <% end %>
-<div class="list-group">
-  <% @teams.each do |team| %>
-    <div class="list-group-item">
-      <div class="row">
-        <div class="col-4">
-          <% if team.avatar.attached? %>
-            <%= image_tag(team.avatar) %>
-          <% else %>
-            <%= image_tag("splatter.png") %>
-          <% end %>
-        </div>
-        <div class="col-8" style="display: flex; align-items: center;">
-          <h4><%= team.display_name %></h4>
-        </div>
-      </div>
-    </div>
-  <% end %>
+
+<div class="form-group">
+  <label for="division-select"><strong>Division</strong></label>
+  <select class="form-control" id="teams-division-select">
+    <option value="pro">Pro</option>
+    <option value="semipro">Semi-pro</option>
+    <option value="3">Division 3</option>
+    <option value="4">Division 4</option>
+  </select>
 </div>
 
+<%= render "team-list", teams: @teams %>

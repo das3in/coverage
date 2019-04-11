@@ -2,7 +2,19 @@ class TeamsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :delete]
 
   def index
-    @teams = Team.includes(:avatar_attachment).all
+    if params[:division]
+      @teams = Team
+        .includes(:avatar_attachment)
+        .where(division: params[:division])
+        .order(current_pbsn_rating: :desc)
+    else
+      @teams = Team.includes(:avatar_attachment).where(division: "pro").order(current_pbsn_rating: :desc)
+    end
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def show
