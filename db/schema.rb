@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_154352) do
+ActiveRecord::Schema.define(version: 2019_04_11_180707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,17 @@ ActiveRecord::Schema.define(version: 2019_04_08_154352) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "bunkers", force: :cascade do |t|
+    t.string "name"
+    t.integer "top", default: 100
+    t.integer "left", default: 100
+    t.integer "rotation", default: 0
+    t.bigint "field_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["field_id"], name: "index_bunkers_on_field_id"
+  end
+
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
@@ -49,6 +60,13 @@ ActiveRecord::Schema.define(version: 2019_04_08_154352) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
+  create_table "fields", force: :cascade do |t|
+    t.bigint "tournament_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_fields_on_tournament_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -136,6 +154,17 @@ ActiveRecord::Schema.define(version: 2019_04_08_154352) do
     t.index ["tournament_id"], name: "index_pickems_on_tournament_id"
   end
 
+  create_table "points", force: :cascade do |t|
+    t.bigint "match_id"
+    t.string "start_time"
+    t.string "end_time"
+    t.bigint "winner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_id"], name: "index_points_on_match_id"
+    t.index ["winner_id"], name: "index_points_on_winner_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "slug"
@@ -211,6 +240,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_154352) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "current_day", default: "Friday"
+    t.boolean "visible", default: true
     t.index ["league_id"], name: "index_tournaments_on_league_id"
   end
 
@@ -233,6 +263,8 @@ ActiveRecord::Schema.define(version: 2019_04_08_154352) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bunkers", "fields"
+  add_foreign_key "fields", "tournaments"
   add_foreign_key "matches", "registered_teams", column: "away_team_id"
   add_foreign_key "matches", "registered_teams", column: "home_team_id"
   add_foreign_key "matches", "registered_teams", column: "winner_id"
@@ -246,6 +278,8 @@ ActiveRecord::Schema.define(version: 2019_04_08_154352) do
   add_foreign_key "pickem_players", "pickems"
   add_foreign_key "pickem_players", "users"
   add_foreign_key "pickems", "tournaments"
+  add_foreign_key "points", "matches"
+  add_foreign_key "points", "registered_teams", column: "winner_id"
   add_foreign_key "posts", "tournaments"
   add_foreign_key "posts", "users"
   add_foreign_key "predictions", "matches"

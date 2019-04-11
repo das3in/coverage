@@ -1,7 +1,7 @@
 <% @leagues.each do |league| %>
   <h3><%= league.name %></h3>
   <hr />
-  <% league.tournaments.order(start_date: :desc).each do |tournament| %>
+  <% league.tournaments.where(visible: true).order(start_date: :desc).each do |tournament| %>
     <%= link_to tournament_path(tournament) do %>
       <div class="card">
         <% if tournament.thumbnail.attached? %>
