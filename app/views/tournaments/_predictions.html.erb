@@ -4,7 +4,7 @@
   <% matches.each do |match| %>
     <div class="prediction">
       <div class="team-row">
-        <h6><%= match.home_team.team.name %>
+        <h6><%= match.home_team.team.display_name %>
         <span class="scoreBox <%= match.prediction.home_team_guess > match.prediction.away_team_guess ? "winner" : "loser" %>">
           <%= "#{(match.prediction.home_team_guess * 100).round(2)}%" %>
         </span>
@@ -14,7 +14,7 @@
         </h6>
       </div>
       <div class="team-row">
-        <h6><%= match.away_team.team.name %>
+        <h6><%= match.away_team.team.display_name %>
         <span class="scoreBox <%= match.prediction.away_team_guess > match.prediction.home_team_guess ? "winner" : "loser" %>">
           <%= "#{(match.prediction.away_team_guess * 100).round(2)}%" %>
         </span>
