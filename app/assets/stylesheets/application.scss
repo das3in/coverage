@@ -255,13 +255,12 @@ h6 {
 
 .predictions {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 }
 .prediction {
   background-color: white;
   padding: 10px;
-  width: 100%;
+  width: 500px;
   margin: 10px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
@@ -281,7 +280,7 @@ h6 {
   background-color: rgba(255, 0, 0, 0.4);
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 1000px) {
   .prediction {
     width: 100%;
   }
