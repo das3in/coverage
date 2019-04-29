@@ -1,0 +1,5 @@
+<ul>
+  <% @teams.each do |team| %>
+    <li><%= link_to team.team.name, edit_tournament_registered_team_path(@tournament, team) %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,24 @@
+<h1><%= @team.team.name %></h1>
+
+<%= simple_form_for [@tournament, @team] do |f| %>
+  <div class="row">
+    <div class="form-group">
+      <%= f.input :group, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <%= f.input :wins, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <%= f.input :losses, class: "form-control" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <%= f.submit "Submit" %>
+    </div>
+  </div>
+<% end %>

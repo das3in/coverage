@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :tournaments do
     resources :matches
     resources :microposts, only: [:create]
+    resources :registered_teams
   end
   resources :posts
 

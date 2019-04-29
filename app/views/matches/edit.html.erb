@@ -2,8 +2,14 @@
 
 <%= render "form", match: @match, tournament: @tournament %>
 
+<hr />
+
 <% if @match.prediction %>
   <h3>Already Predicted</h3>
 <% else %>
-  <%= button_to "Predict", "/matches/#{@match.id}/generate_prediction/" %>
+  <%= button_to "Predict", "/matches/#{@match.id}/generate_prediction/", class: "btn btn-success" %>
 <% end %>
+
+<hr />
+
+<%= link_to "Back to Matches", tournament_matches_path(@tournament), class: "btn btn-primary" %>
