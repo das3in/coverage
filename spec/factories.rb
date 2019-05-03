@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :tournament_set do
+    order { 1 }
+    name { "MyString" }
+  end
+
   factory :point_event do
     bunkerId { "MyString" }
     status { "MyString" }
