@@ -1,11 +1,26 @@
-<div class="list-group">
-  <% matches.each do |match| %>
-    <div class="list-group-item">
-      <%= link_to edit_tournament_match_path(tournament, match) do %>
-        <%= match.home_team.team.name %> - <%= match.home_team_score %>
-        vs
-        <%= match.away_team.team.name %>  - <%= match.away_team_score %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Set</th>
+      <th>Home Team</th>
+      <th>Score</th>
+      <th>Score</th>
+      <th>Away Team</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% sets.each do |set| %>
+      <tr>
+        <% set.matches.each do |match| %>
+          <tr>
+            <td><%= link_to set.name, edit_tournament_match_path(tournament, match) %></td>
+            <td><%= match.home_team.team.display_name %></td>
+            <td><%= match.home_team_score %></td>
+            <td><%= match.away_team_score %></td>
+            <td><%= match.away_team.team.display_name %></td>
+          </tr>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

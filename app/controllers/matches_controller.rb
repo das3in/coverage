@@ -12,7 +12,6 @@ class MatchesController < ApplicationController
 
   def new
     @tournament = Tournament.find(params[:tournament_id])
-    @match = @tournament.matches.new
   end
 
   def create
@@ -56,6 +55,7 @@ class MatchesController < ApplicationController
       :completed,
       :current,
       :day,
+      :tournament_set_id,
     )
   end
 end

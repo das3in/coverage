@@ -4,7 +4,7 @@ class Match < ApplicationRecord
   belongs_to :winner, class_name: "RegisteredTeam", optional: true
   belongs_to :tournament
 
-  belongs_to :set
+  belongs_to :tournament_set
 
   has_one :prediction, dependent: :destroy
   has_many :rating_changes, dependent: :destroy

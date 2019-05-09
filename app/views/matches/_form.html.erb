@@ -68,6 +68,12 @@
         <%= f.select :day, ["Friday", "Saturday", "Sunday"], {}, { class: "form-control" } %>
       </div>
     </div>
+    <div class="col">
+      <div class="form-group">
+        <%= f.label :tournament_set_id %>
+        <%= f.select :tournament_set_id, @tournament.tournament_sets.order("created_at ASC").collect { |set| [set.name, set.id] }, {}, { class: "form-control" } %>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="form-group">
